@@ -1,0 +1,19 @@
+
+function Agilence-AD-CreateGroup  ([string]$GroupName , [string]$Path )
+{
+	 try {	
+		$GroupObject = Get-ADGroup -identity $GroupName
+		
+		if ($GroupObject -ne $null)
+		{ 
+			$message = "Group " + $GroupName + " exists "
+			Write-Output $message
+		}
+	}
+
+	catch {
+		$message = "Creating Group " + $GroupName 
+		Write-Output $message
+		New-ADGroup -Name $GroupName  -GroupCategory Security -GroupScope Global -DisplayName $GroupName -Path $Path
+		}
+}
