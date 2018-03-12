@@ -1,0 +1,1 @@
+Select-String -Path D:\AgilenceLogs\'Agilence AutoQuery Runner'\*.*, D:\AgilenceLogs\Agilence Transaction Processor\*.* -pattern Error,Trunc -Exclude D:\AgilenceLogs\'Agilence AutoQuery Runner'\nsb*.txt > C:\Users\mschwarz\Desktop\error.txt

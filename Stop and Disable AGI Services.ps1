@@ -1,0 +1,1 @@
+Get-Service "Agilence Data Import Service", "Agilence Health Monitor", "Agilence Poll Servers", "Agilence Task Manager", "Agilence Transaction Processor" | Stop-Service -PassThru | Set-Service -StartupType disabled | Start-Transcript -path C:\Users\mschwarz\Desktop\error.txt

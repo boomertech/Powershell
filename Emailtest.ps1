@@ -1,0 +1,1 @@
+Send-MailMessage -to "mmschwarz1213@gmail.com" -Subject "test" -From "mschwarz@agilenceinc.com"  -SmtpServer webmail.agilenceinc.com

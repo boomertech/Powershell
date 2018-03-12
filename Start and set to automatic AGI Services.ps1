@@ -1,0 +1,1 @@
+Get-Service "Agilence Data Import Service", "Agilence Health Monitor", "Agilence Poll Servers", "Agilence Task Manager", "Agilence Transaction Processor" | Set-Service -StartupType automatic -PassThru| Start-Service | Start-Transcript -path C:\Users\mschwarz\Desktop\error.txt
