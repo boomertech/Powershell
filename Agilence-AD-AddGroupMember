@@ -1,0 +1,18 @@
+function Agilence-AD-AddGroupMember ([string]$GroupName , [string]$Member, [string]$Path )
+{
+    $members = Get-ADGroupMember -Identity $GroupName | Select -ExpandProperty SamAccountName 
+        
+    If ($members -contains $Member) {
+        $message = "Group " + $GroupName + " already contains " + $Member
+		Write-Output $message
+    } 
+    Else 
+    {
+        $message = "Adding " + $Member + " to " + $GroupName 
+        Write-Output $message
+        Add-ADGroupMember $GroupName $Member
+        
+    }
+    
+
+}
