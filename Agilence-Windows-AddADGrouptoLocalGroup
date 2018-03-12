@@ -1,0 +1,22 @@
+function Agilence-Windows-AddADGrouptoLocalGroup  ([string]$LocalGroupName , [string]$ADGroupName, [string]$Server )
+{
+	#Get the RemoteGroup group
+	$RemoteGroup = [ADSI]"WinNT://$Server/$LocalGroupName"
+	$Members = @($RemoteGroup.psbase.Invoke("Members"))
+	#Populate the $MemberNames array with all the user ID's
+	$MemberNames = @()
+	$Members | ForEach-Object {$MemberNames += $_.GetType().InvokeMember("Name", 'GetProperty', $null, $_, $null).ToString().ToUpper();}
+
+	
+	#See if your user ID is in there
+	if (-Not $MemberNames.Contains($ADGroupName.ToString().ToUpper())) {
+		$message = "Adding Group " + $GroupName 
+		Write-Output $message
+		$RemoteGroup.Add("WinNT://agilenceinc.local/$ADGroupName, group")
+	}
+	else {
+		$message = "Group " + $GroupName + " is already a member"
+		Write-Output $message
+	}
+	
+}
